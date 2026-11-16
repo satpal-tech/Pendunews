@@ -1,0 +1,6 @@
+{
+  "routes": [
+    { "path": "/", "title": "BJP News — ਪੰਜਾਬੀ ਨਿਊਜ਼ ਪੋਰਟਲ" },
+    { "path": "/admin.html", "title": "BJP News Control Panel" }
+  ]
+}
