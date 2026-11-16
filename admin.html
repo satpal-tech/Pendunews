@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BJP News Control Panel</title>
+  <link rel="icon" type="image/png" href="/brand/bjp-news-favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/admin.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <a href="/" class="admin-brand">
+        <img src="/brand/bjp-news-logo.png" alt="BJP News" />
+      </a>
+      <div class="panel-label">CONTROL PANEL</div>
+      <nav class="side-nav" aria-label="Control panel navigation">
+        <a class="side-link active" href="#overview"><span>Overview</span></a>
+        <a class="side-link" href="#featured"><span>Featured Story</span></a>
+        <a class="side-link" href="#stories"><span>News Stories</span></a>
+        <a class="side-link" href="#settings"><span>Site Settings</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="/">← Public Website</a>
+        <small>Local CMS v1.0</small>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <span class="eyebrow">BJP NEWS / ADMIN</span>
+          <h1>Control Panel</h1>
+          <p>ਆਪਣੀ public news website ਦਾ content ਇੱਥੋਂ manage ਕਰੋ।</p>
+        </div>
+        <button id="saveAllTop" class="button primary">Save Changes</button>
+      </header>
+
+      <div class="notice">
+        <span>ⓘ</span>
+        <div>
+          <strong>Browser-only CMS</strong>
+          <p>ਇਸ demo panel ਦੀਆਂ updates ਸਿਰਫ਼ browser ਦੀ local storage ਵਿੱਚ save ਹੁੰਦੀਆਂ ਹਨ। Public users ਲਈ permanent multi-user updates ਵਾਸਤੇ backend/database ਅਤੇ secure login ਚਾਹੀਦਾ ਹੋਵੇਗਾ।</p>
+        </div>
+      </div>
+
+      <section id="overview" class="panel-section overview-grid">
+        <div class="stat-card">
+          <span>Published stories</span>
+          <strong id="storyCount">0</strong>
+          <small>ਤੁਹਾਡੇ editable articles</small>
+        </div>
+        <div class="stat-card">
+          <span>Categories</span>
+          <strong>5</strong>
+          <small>ਪੰਜਾਬ • ਦੇਸ਼ • ਰਾਜਨੀਤੀ • ਦੁਨੀਆ • ਖੇਡਾਂ</small>
+        </div>
+        <div class="stat-card">
+          <span>Storage</span>
+          <strong id="storageStatus">Ready</strong>
+          <small>Local browser storage</small>
+        </div>
+      </section>
+
+      <section id="featured" class="panel-section card-section">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">HERO CONTENT</span>
+            <h2>Featured Story</h2>
+          </div>
+          <span class="section-help">Homepage ਦੇ hero area ਲਈ</span>
+        </div>
+        <form id="featuredForm" class="form-grid">
+          <label class="wide">Headline<input name="title" required maxlength="180" /></label>
+          <label class="wide">Summary<textarea name="summary" rows="3" maxlength="360"></textarea></label>
+          <label>Category
+            <select name="category">
+              <option>ਪੰਜਾਬ</option>
+              <option>ਦੇਸ਼</option>
+              <option>ਰਾਜਨੀਤੀ</option>
+              <option>ਦੁਨੀਆ</option>
+              <option>ਖੇਡਾਂ</option>
+            </select>
+          </label>
+          <label>Image URL<input name="image" type="url" placeholder="https://..." /></label>
+          <label>Read-more link<input name="url" type="url" placeholder="https://..." /></label>
+          <label>Reading time<input name="readingTime" placeholder="8 ਮਿੰਟ ਪੜ੍ਹਨ ਦਾ ਸਮਾਂ" /></label>
+        </form>
+      </section>
+
+      <section id="stories" class="panel-section card-section">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">CONTENT LIBRARY</span>
+            <h2>News Stories</h2>
+          </div>
+          <button id="addStory" class="button secondary">+ Add Story</button>
+        </div>
+        <div id="storiesEditor" class="story-editor"></div>
+      </section>
+
+      <section id="settings" class="panel-section card-section">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">BRAND & MESSAGING</span>
+            <h2>Site Settings</h2>
+          </div>
+        </div>
+        <form id="settingsForm" class="form-grid">
+          <label>Site title<input name="siteTitle" maxlength="80" /></label>
+          <label>Tagline<input name="tagline" maxlength="120" /></label>
+          <label class="wide">Breaking ticker messages<textarea name="ticker" rows="3" placeholder="ਹਰ message ਨਵੀਂ line 'ਤੇ ਲਿਖੋ"></textarea></label>
+          <label class="wide">About text<textarea name="aboutText" rows="3" maxlength="500"></textarea></label>
+        </form>
+      </section>
+
+      <section class="panel-section card-section tools-section">
+        <div class="section-title">
+          <div>
+            <span class="eyebrow">DATA TOOLS</span>
+            <h2>Backup & Restore</h2>
+          </div>
+        </div>
+        <div class="tool-row">
+          <button id="exportData" class="button secondary">Export JSON</button>
+          <label class="button secondary file-button">Import JSON<input id="importData" type="file" accept="application/json" /></label>
+          <button id="resetData" class="button danger">Reset Demo Content</button>
+          <span id="saveMessage" class="save-message" role="status"></span>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
