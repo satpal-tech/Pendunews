@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BJP News Punjabi demo news portal with latest headlines, categories and editorial updates." />
+  <meta name="theme-color" content="#0b1930" />
+  <title>BJP News — ਪੰਜਾਬੀ ਨਿਊਜ਼ ਪੋਰਟਲ</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/brand/bjp-news-favicon.png" />
+  <link rel="apple-touch-icon" href="/brand/bjp-news-favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Gurmukhi:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <div class="topline">
+      <div class="container topline-inner">
+        <span>ਮੰਗਲਵਾਰ, 27 ਅਪ੍ਰੈਲ 2026</span>
+        <span class="topline-note">ਸੁਤੰਤਰ ਨਿਊਜ਼ ਪੋਰਟਲ</span>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-main">
+        <a class="brand" href="#top" aria-label="BJP News home">
+          <img class="brand-logo-image" src="/brand/bjp-news-logo.png" alt="BJP News" />
+        </a>
+        <div class="header-actions">
+          <button class="icon-button search-toggle" aria-label="Search" title="ਖੋਜ">⌕</button>
+          <button class="menu-toggle" aria-expanded="false" aria-controls="mainNav">ਮੇਨੂ <span>☰</span></button>
+        </div>
+        <nav id="mainNav" class="main-nav" aria-label="ਮੁੱਖ ਨੈਵੀਗੇਸ਼ਨ">
+          <a class="nav-link active" href="#top">ਮੁੱਖ ਪੰਨਾ</a>
+          <a class="nav-link" href="#latest">ਤਾਜ਼ਾ ਖ਼ਬਰਾਂ</a>
+          <a class="nav-link" href="#categories">ਸ਼੍ਰੇਣੀਆਂ</a>
+          <a class="nav-link" href="#about">ਸਾਡੇ ਬਾਰੇ</a>
+        </nav>
+      </div>
+
+      <div class="container search-panel" hidden>
+        <form id="searchForm" role="search">
+          <label for="searchInput">ਖ਼ਬਰਾਂ ਵਿੱਚ ਖੋਜੋ</label>
+          <div class="search-row">
+            <input id="searchInput" type="search" placeholder="ਜਿਵੇਂ: ਪੰਜਾਬ, ਖੇਡਾਂ, ਨੀਤੀ..." autocomplete="off" />
+            <button type="submit" class="button button-dark">ਖੋਜੋ</button>
+          </div>
+          <p id="searchStatus" class="search-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="ticker-wrap" aria-label="Breaking news">
+        <div class="container ticker">
+          <span class="ticker-label"><i></i> ਬ੍ਰੇਕਿੰਗ</span>
+          <div id="tickerTrack" class="ticker-track">
+            <span>ਪੰਜਾਬ ਦੀਆਂ ਅੱਜ ਦੀਆਂ ਅਹਿਮ ਖ਼ਬਰਾਂ ਅਤੇ ਤਾਜ਼ਾ ਅਪਡੇਟਸ ਇੱਥੇ ਪੜ੍ਹੋ</span>
+            <span>ਦੇਸ਼-ਦੁਨੀਆ ਦੀ ਹਰ ਹਲਚਲ ਉੱਤੇ ਨਜ਼ਰ</span>
+            <span>ਤੁਹਾਡੇ ਸ਼ਹਿਰ ਤੋਂ ਤੁਹਾਡੀ ਸਕ੍ਰੀਨ ਤੱਕ</span>
+          </div>
+          <button class="ticker-control" id="tickerToggle" aria-label="Pause breaking news">II</button>
+        </div>
+      </section>
+
+      <div class="container feed-status-bar" aria-live="polite">
+        <div class="feed-status-copy">
+          <span class="feed-status-dot" aria-hidden="true"></span>
+          <strong>LIVE RSS FEED</strong>
+          <span id="feedStatus" class="feed-status loading">Live RSS ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...</span>
+        </div>
+        <div class="feed-status-actions">
+          <span id="feedLastUpdated" class="feed-last-updated">ਹਰ 5 ਮਿੰਟ ਬਾਅਦ auto-refresh</span>
+          <button id="refreshFeed" class="refresh-feed" type="button">ਤਾਜ਼ਾ ਕਰੋ</button>
+        </div>
+      </div>
+
+      <section class="hero-section container" aria-labelledby="featuredTitle">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> <span id="featuredEyebrow">ਅੱਜ ਦੀ ਖ਼ਾਸ ਕਹਾਣੀ</span></div>
+          <h1 id="featuredTitle">ਪੰਜਾਬ ਦੀ ਰਫ਼ਤਾਰ ਬਦਲ ਰਹੀ ਹੈ — ਨਵੇਂ ਵਿਚਾਰਾਂ ਤੋਂ ਨਵੀਆਂ ਸੰਭਾਵਨਾਵਾਂ ਤੱਕ</h1>
+          <p id="featuredSummary" class="hero-summary">ਇਹ ਇੱਕ ਨਮੂਨਾ ਸੰਪਾਦਕੀ ਕਹਾਣੀ ਹੈ। ਬਦਲਦੇ ਸ਼ਹਿਰ, ਉਭਰਦੇ ਉਦਯੋਗ ਅਤੇ ਨੌਜਵਾਨ ਸੋਚ ਪੰਜਾਬ ਦੇ ਅਗਲੇ ਅਧਿਆਇ ਦੀ ਤਸਵੀਰ ਬਣਾ ਰਹੇ ਹਨ।</p>
+          <div class="story-meta">
+            <span id="featuredCategory">ਪੰਜਾਬ</span>
+            <span>•</span>
+            <span id="featuredReadingTime">8 ਮਿੰਟ ਪੜ੍ਹਨ ਦਾ ਸਮਾਂ</span>
+          </div>
+          <a id="featuredLink" class="read-link" href="#latest">ਪੂਰੀ ਕਹਾਣੀ ਪੜ੍ਹੋ <span>→</span></a>
+        </div>
+        <div class="hero-media">
+          <img id="featuredImage" src="/images/hero-punjab.jpg" alt="ਪੰਜਾਬ ਦੇ ਖੇਤ ਅਤੇ ਸ਼ਹਿਰੀ ਵਿਕਾਸ" />
+          <span class="media-stamp">ਫ਼ੀਚਰ</span>
+        </div>
+      </section>
+
+      <section class="container quick-picks" aria-label="Quick highlights">
+        <article class="quick-card">
+          <span class="quick-number">01</span>
+          <div>
+            <small>ਪੰਜਾਬ</small>
+            <h3>ਪੰਜਾਬ ਵਿੱਚ sustainable ਵਿਕਾਸ ਦੀ ਨਵੀਂ ਗੱਲਬਾਤ</h3>
+          </div>
+          <span class="arrow">›</span>
+        </article>
+        <article class="quick-card">
+          <span class="quick-number">02</span>
+          <div>
+            <small>ਦੇਸ਼</small>
+            <h3>ਡਿਜ਼ੀਟਲ ਪਬਲਿਕ ਸਰਵਿਸਿਜ਼: ਲੋਕਾਂ ਲਈ ਕੀ ਬਦਲਿਆ?</h3>
+          </div>
+          <span class="arrow">›</span>
+        </article>
+        <article class="quick-card">
+          <span class="quick-number">03</span>
+          <div>
+            <small>ਦੁਨੀਆ</small>
+            <h3>ਗਲੋਬਲ ਮੰਚ 'ਤੇ ਨਵੀਂ ਸਹਿਯੋਗੀ ਸੋਚ ਦਾ ਅਸਰ</h3>
+          </div>
+          <span class="arrow">›</span>
+        </article>
+      </section>
+
+      <section id="categories" class="container content-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">ਆਪਣੀ ਸ਼੍ਰੇਣੀ ਚੁਣੋ</span>
+            <h2>ਖ਼ਬਰਾਂ ਦੀ ਦੁਨੀਆ</h2>
+          </div>
+          <div class="category-tabs" role="tablist" aria-label="News categories">
+            <button class="category-tab active" data-category="ਸਭ" role="tab" aria-selected="true">ਸਭ</button>
+            <button class="category-tab" data-category="ਪੰਜਾਬ" role="tab" aria-selected="false">ਪੰਜਾਬ</button>
+            <button class="category-tab" data-category="ਦੇਸ਼" role="tab" aria-selected="false">ਦੇਸ਼</button>
+            <button class="category-tab" data-category="ਰਾਜਨੀਤੀ" role="tab" aria-selected="false">ਰਾਜਨੀਤੀ</button>
+            <button class="category-tab" data-category="ਦੁਨੀਆ" role="tab" aria-selected="false">ਦੁਨੀਆ</button>
+            <button class="category-tab" data-category="ਖੇਡਾਂ" role="tab" aria-selected="false">ਖੇਡਾਂ</button>
+          </div>
+        </div>
+
+        <div class="news-layout">
+          <div id="newsGrid" class="news-grid"></div>
+          <aside class="latest-panel" id="latest">
+            <div class="aside-heading">
+              <div>
+                <span class="section-kicker">ਹੋਣੇ-ਹੋਣੇ</span>
+                <h2>ਤਾਜ਼ਾ ਅਪਡੇਟਸ</h2>
+              </div>
+              <span class="live-dot">LIVE</span>
+            </div>
+            <div id="latestList" class="latest-list"></div>
+            <a class="all-news-link" href="#categories">ਸਾਰੀਆਂ ਖ਼ਬਰਾਂ ਵੇਖੋ <span>→</span></a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="quote-band">
+        <div class="container quote-inner">
+          <span class="quote-mark">“</span>
+          <p>ਖ਼ਬਰ ਸਿਰਫ਼ ਘਟਨਾ ਨਹੀਂ ਹੁੰਦੀ—ਇਹ ਉਸ ਬਦਲਾਅ ਦੀ ਸ਼ੁਰੂਆਤ ਹੁੰਦੀ ਹੈ ਜਿਸਨੂੰ ਅਸੀਂ ਮਿਲ ਕੇ ਸਮਝਦੇ ਹਾਂ।</p>
+          <span class="quote-credit">BJP News ਸੰਪਾਦਕੀ ਡੈਸਕ</span>
+        </div>
+      </section>
+
+      <section id="about" class="container about-section">
+        <div class="about-label">ਸਾਡੇ ਬਾਰੇ</div>
+        <div class="about-copy">
+          <h2>ਸਾਫ਼, ਸਪਸ਼ਟ ਅਤੇ<br /><em>ਕੰਮ ਦੀ ਖ਼ਬਰ।</em></h2>
+          <p>BJP News ਇੱਕ independent demo-news experience ਹੈ। ਇੱਥੇ ਦਿੱਤੀਆਂ ਸਾਰੀਆਂ headlines ਅਤੇ ਕਹਾਣੀਆਂ sample content ਹਨ, ਜਿਨ੍ਹਾਂ ਨੂੰ ਅਸਲੀ editorial workflow ਲਈ ਬਾਅਦ ਵਿੱਚ ਬਦਲਿਆ ਜਾ ਸਕਦਾ ਹੈ।</p>
+        </div>
+        <div class="about-rule"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="#top">
+            <img class="brand-logo-image" src="/brand/bjp-news-logo.png" alt="BJP News" />
+          </a>
+          <p class="footer-note">ਇਹ ਇੱਕ independent demo website ਹੈ। ਇਹ ਕਿਸੇ ਸਰਕਾਰੀ ਸੰਸਥਾ ਜਾਂ ਰਾਜਨੀਤਿਕ ਪਾਰਟੀ ਦੀ official website ਨਹੀਂ ਹੈ।</p>
+        </div>
+        <div class="footer-links">
+          <a href="#top">ਮੁੱਖ ਪੰਨਾ</a>
+          <a href="#latest">ਤਾਜ਼ਾ ਖ਼ਬਰਾਂ</a>
+          <a href="#categories">ਸ਼੍ਰੇਣੀਆਂ</a>
+          <a href="#about">ਸਾਡੇ ਬਾਰੇ</a>
+          <a href="/admin.html">Control Panel</a>
+        </div>
+        <div class="footer-contact">
+          <span>ਸੰਪਰਕ</span>
+          <a href="mailto:desk@bjpnews.demo">desk@bjpnews.demo</a>
+          <small>© 2026 BJP News Demo</small>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
